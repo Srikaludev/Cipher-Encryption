@@ -17,16 +17,22 @@ public class RailFenceCipher {
         } else {
             char[] tempArray = new char[phrase.length];
             int mid = (phrase.length + 1) / 2;
-            int evenIndex = 0, oddIndex = mid;
+            int evenIndex = 0, oddIndex = 1;  // Change from oddIndex = mid to oddIndex = 1
 
+            // Place characters at even indices (first half of input)
             for (int i = 0; i < mid; i++) {
-                tempArray[evenIndex] = phrase[i];
-                evenIndex += 2;
+                if (evenIndex < phrase.length) {  // Add bounds check
+                    tempArray[evenIndex] = phrase[i];
+                    evenIndex += 2;
+                }
             }
            
+            // Place characters at odd indices (second half of input)
             for (int i = mid; i < phrase.length; i++) {
-                tempArray[oddIndex] = phrase[i];
-                oddIndex += 2;
+                if (oddIndex < phrase.length) {  // Add bounds check
+                    tempArray[oddIndex] = phrase[i];
+                    oddIndex += 2;
+                }
             }
             result.append(tempArray);
         }

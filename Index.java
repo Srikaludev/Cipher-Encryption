@@ -55,7 +55,7 @@ public class Index {
                     String result = "";
 
                     System.out.print("Phrase: ");
-                    in.nextLine(); // Consume newline left-over
+                    in.nextLine();
                     String phrase = in.nextLine();
                     char[] letters = phrase.toCharArray();
                     boolean encrypt = cryptType == 'E';
@@ -76,13 +76,8 @@ public class Index {
                     }
 
                     if (!result.isEmpty()) {
-                        if (encrypt) {
-                            System.out.println("Encrypted phrase: " + result);
-                        } else {
-                            System.out.println("Decrypted phrase: " + result);
-                        }
                         try {
-                            printNames(result);
+                            PrintNames.printNames(result, 10, encrypt);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -94,42 +89,5 @@ public class Index {
         }
 
         in.close();
-    }
-
-    public static void printNames(String name) throws InterruptedException {
-        String alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        long timeCharacter = 1;
-        List<Character> originalList = new ArrayList<>();
-        for (char c : name.toCharArray()) {
-            originalList.add(c);
-        }
-
-        List<Character> shuffleList = new ArrayList<>();
-        for (char c : alphabet.toCharArray()) {
-            shuffleList.add(c);
-        }
-        Collections.shuffle(shuffleList);
-
-        StringBuilder sb = new StringBuilder();
-
-        for (char j : originalList) {
-            if (j != ' ') {
-                for (char i : shuffleList) {
-                    System.out.println(sb.toString() + i);
-
-                    if (i == j) {
-                        sb.append(j);
-                    }
-
-                    if (sb.toString().equals(name)) {
-                        break;
-                    }
-
-                    TimeUnit.MILLISECONDS.sleep(timeCharacter);
-                }
-            } else {
-                sb.append(' ');
-            }
-        }
     }
 }
