@@ -1,59 +1,75 @@
-# Cipher Program
+# Cipher Encryption & Decryption Program
 
-This program implements three different ciphers for encryption and decryption: the Caesar cipher, the Substitution cipher, and the Rail Fence cipher. The program allows users to choose a cipher, enter a phrase, and either encrypt or decrypt the phrase based on their choice.
+A Java-based encryption/decryption program that implements three classical ciphers with a hacker-style animation interface.
+
+## Overview
+
+This program allows users to encrypt and decrypt messages using three different cipher algorithms:
+- Caesar Cipher
+- Substitution Cipher
+- Rail Fence Cipher
+
+The application features a command-line interface with visual feedback that mimics a "encryption" animation during the encryption and decryption processes.
 
 ## Features
 
-- **Caesar Cipher**: 
-  - Shifts letters forward or backward by a user-specified amount.
-  - Verifies if the shift amount is an integer between 1 and 25.
-  - Throws an `IllegalArgumentException` with the message "Invalid Amount" if the shift amount is not valid.
+### Caesar Cipher
+- Shifts each letter in the alphabet by a specified amount (1-25)
+- Preserves case sensitivity (uppercase/lowercase)
+- Non-alphabetic characters remain unchanged
+- Customizable shift amount for varying encryption strength
 
-- **Rail Fence Cipher**: 
-  - Encrypts or decrypts a phrase using the Rail Fence Cipher technique.
-  - Returns an array with the encrypted or decrypted form of the phrase.
+### Substitution Cipher
+- Uses predefined substitution arrays where each letter is mapped to another letter
+- Separate mapping arrays for encryption and decryption
+- Maintains case sensitivity
+- Non-alphabetic characters remain unchanged
 
-- **Substitution Cipher**: 
-  - Substitutes letters in the phrase with those in a predefined substitution array.
-  - Reverses the substitution if decryption is required.
+### Rail Fence Cipher
+- A transposition cipher that rearranges letters without changing them
+- Encryption separates characters at even positions from those at odd positions
+- Maintains all original characters but changes their positions
+
+### Visual Features
+- Real-time "hacker-style" character scrambling animation during processing
+- Color-coded terminal output with ANSI escape codes
+- Visual indicators for encryption and decryption status
+- Completion messages ("ENCRYPTION COMPLETE")
 
 ## How to Use
 
-1. Run the program.
-2. The program will display the message: **"Cipher Program - Please choose an option"**.
-3. Choose the type of cipher you want to use (Caesar, Substitution, or Rail Fence).
-4. Select whether you want to encrypt or decrypt the phrase.
-5. Enter the phrase you want to encrypt or decrypt.
-6. For the Caesar cipher, you will also be prompted to enter the shift amount (between 1 and 25).
-7. The program will output the encrypted or decrypted phrase.
-8. The program will keep running until you input "Q" or "q" to quit.
+1. Compile all Java files:
+   ```
+   javac Index.java
+   ```
 
-## Example Usage
+2. Run the program:
+   ```
+   java Index.java
+   ```
 
-### Caesar Cipher
-- **Encrypt**: 
-  - Input: `HELLO` with a shift of `3`.
-  - Output: `KHOOR`.
-- **Decrypt**: 
-  - Input: `KHOOR` with a shift of `3`.
-  - Output: `HELLO`.
+3. Follow the command-line prompts:
+   - Choose a cipher type:
+     - `C` for Caesar
+     - `R` for Rail Fence
+     - `S` for Substitution
+     - `Q` to quit
+   
+   - Choose operation:
+     - `E` for encryption
+     - `D` for decryption
+   
+   - Enter the phrase to encrypt/decrypt
+   
+   - For Caesar cipher only, enter a shift amount (1-25)
 
-### Rail Fence Cipher
-- **Encrypt**: 
-  - Input: `HELLO WORLD`.
-  - Output: (Encrypted form).
-- **Decrypt**: 
-  - Input: (Encrypted form).
-  - Output: `HELLO WORLD`.
+## Implementation Details
 
-### Substitution Cipher
-- **Encrypt**: 
-  - Input: `HELLO`.
-  - Output: (Encrypted form based on the substitution array).
-- **Decrypt**: 
-  - Input: (Encrypted form).
-  - Output: `HELLO`.
+- The program validates all user inputs
+- Case sensitivity is preserved in all ciphers
+- The visual feedback system simulates a "encryption" process with randomized character display
+- The program runs in a loop until the user explicitly quits
 
-## Requirements
+## Author
 
-- Java Development Kit (JDK) version 8 or later.
+Created by Srikar.C (GitHub: [Srikaludev](https://github.com/Srikaludev))
